@@ -83,6 +83,9 @@ CURL="curl -c /tmp/cookie -b /tmp/cookie"
 $CURL $URL
 rm -f /tmp/cookie
 
+# set default password for good measure
+/usr/lib/inithooks/bin/phplist.py --email=$ADMIN_MAIL --pass=$ADMIN_PASS
+
 # stop services
 /etc/init.d/mysql stop
 /etc/init.d/apache2 stop
