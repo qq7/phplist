@@ -51,6 +51,7 @@ a2enmod rewrite
 
 # start services
 /etc/init.d/mysql start
+/etc/init.d/apache2 start
 
 # setup the database
 MYSQL_BATCH="mysql --user=root --password=$MYSQL_PASS --batch"
@@ -76,6 +77,13 @@ sed -i "s|^define(\"EMAILTEXTCREDITS.*|define(\"EMAILTEXTCREDITS\",1);|" $CONFIG
 sed -i "s|^define(\"PAGETEXTCREDITS.*|define(\"PAGETEXTCREDITS\",1);|" $CONFIG
 sed -i "s|^define (\"TEST\".*|define (\"TEST\",0);|" $CONFIG
 
+# curl based install
+URL="http://127.0.0.1/admin/?page=initialise&firstinstall=1"
+CURL="curl -c /tmp/cookie -b /tmp/cookie"
+$CURL $URL
+rm -f /tmp/cookie
+
 # stop services
 /etc/init.d/mysql stop
+/etc/init.d/apache2 stop
 
