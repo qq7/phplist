@@ -1,0 +1,21 @@
+#!/bin/sh -ex
+
+DB_NAME=phplist
+DB_USER=phplist
+DB_PASS=$(mcookie)
+
+ADMIN_NAME=admin
+ADMIN_PASS=turnkey
+ADMIN_MAIL=admin@example.com
+
+SRC=/usr/local/src
+WEBROOT=/var/www/phplist
+
+# unpack
+tar -zxf $SRC/phplist-*.tgz -C $SRC
+mv $SRC/phplist-*/public_html/lists $WEBROOT
+mkdir $WEBROOT/docs
+mv $SRC/phplist-*/README* $WEBROOT/docs/
+chown -R root:root $WEBROOT
+rm -rf $SRC/phplist-*
+
