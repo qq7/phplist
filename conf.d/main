@@ -34,3 +34,13 @@ php5 $WEBROOT/admin/index.php \$*
 EOF
 chmod +x $PHPLIST_CLI
 
+# create plugins placeholder
+PHPLIST_PLUGINS=/var/www/phplist-plugins
+mkdir -p $PHPLIST_PLUGINS
+cat >$PHPLIST_PLUGINS/README.txt<<EOF
+Create your own pages to slot into PHPlist, or do certain things are are more
+specific to your situation.
+
+For reference, see: $WEBROOT/admin/plugins
+EOF
+
