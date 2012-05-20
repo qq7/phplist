@@ -19,3 +19,18 @@ mv $SRC/phplist-*/README* $WEBROOT/docs/
 chown -R root:root $WEBROOT
 rm -rf $SRC/phplist-*
 
+# create phplist cli
+PHPLIST_CLI=/usr/local/bin/phplist
+cat >$PHPLIST_CLI<<EOF
+#!/bin/bash -e
+# Run phplist from the command line.
+# Access is restricted to users listed in the config file, default: admin
+# For reference see: $WEBROOT/docs/README.commandline
+
+set \${USER:=admin}
+export USER
+export CONFIG=$WEBROOT/config/config.php
+php5 $WEBROOT/admin/index.php \$*
+EOF
+chmod +x $PHPLIST_CLI
+
