@@ -44,3 +44,8 @@ specific to your situation.
 For reference, see: $WEBROOT/admin/plugins
 EOF
 
+# configure apache
+a2dissite default
+a2ensite phplist
+a2enmod rewrite
+
