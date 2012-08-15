@@ -7,6 +7,7 @@ DB_PASS=$(mcookie)
 ADMIN_NAME=admin
 ADMIN_PASS=turnkey
 ADMIN_MAIL=admin@example.com
+DOMAIN=www.example.com
 
 SRC=/usr/local/src
 WEBROOT=/var/www/phplist
@@ -84,7 +85,7 @@ $CURL $URL
 rm -f /tmp/cookie
 
 # set default password for good measure
-/usr/lib/inithooks/bin/phplist.py --email=$ADMIN_MAIL --pass=$ADMIN_PASS
+/usr/lib/inithooks/bin/phplist.py --email=$ADMIN_MAIL --pass=$ADMIN_PASS --domain=$DOMAIN
 
 # update email text and html signature
 OLD_TEXT="powered by phpList, www.phplist.com"

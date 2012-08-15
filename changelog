@@ -2,7 +2,8 @@ turnkey-phplist-12.0 (1) turnkey; urgency=low
 
   * Initial public release of TurnKey Linux PHPlist.
 
-  * Set PHPlist admin password and email on firstboot (convenience, security).
+  * Set PHPlist admin password, email and domain on firstboot (convenience,
+    security).
 
   * Includes postfix MTA (bound to localhost) for sending of email. Also
     includes webmin postfix module for convenience.
