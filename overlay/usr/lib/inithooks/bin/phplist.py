@@ -72,9 +72,9 @@ def main():
         domain = DEFAULT_DOMAIN
 
     m = MySQL()
-    m.execute('UPDATE phplist.admin SET password=\"%s\" WHERE loginname=\"admin\";' % password)
-    m.execute('UPDATE phplist.admin SET email=\"%s\" WHERE loginname=\"admin\";' % email)
-    m.execute('UPDATE phplist.config SET value=\"%s\" WHERE item=\"website\";' % domain)
+    m.execute('UPDATE phplist.phplist_admin SET password=\"%s\" WHERE loginname=\"admin\";' % password)
+    m.execute('UPDATE phplist.phplist_admin SET email=\"%s\" WHERE loginname=\"admin\";' % email)
+    m.execute('UPDATE phplist.phplist_config SET value=\"%s\" WHERE item=\"website\";' % domain)
 
 if __name__ == "__main__":
     main()

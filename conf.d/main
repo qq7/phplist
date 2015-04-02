@@ -81,7 +81,8 @@ sed -i "s|^define (\"TEST\".*|define (\"TEST\",0);|" $CONFIG
 # curl based install
 URL="http://127.0.0.1/admin/?page=initialise&firstinstall=1"
 CURL="curl -c /tmp/cookie -b /tmp/cookie"
-$CURL $URL
+DATA="firstinstall=1&page=initialise&adminname=admin&orgname=TurnKey+Linux&adminemail=mail%40example.com&adminpassword=turnkeylinux"
+$CURL -d $DATA $URL
 rm -f /tmp/cookie
 
 # set default password for good measure
