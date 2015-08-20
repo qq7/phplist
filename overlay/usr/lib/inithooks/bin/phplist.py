@@ -13,6 +13,7 @@ import sys
 import getopt
 import inithooks_cache
 
+
 from dialog_wrapper import Dialog
 from mysqlconf import MySQL
 
@@ -73,6 +74,8 @@ def main():
 
     if domain == "DEFAULT":
         domain = DEFAULT_DOMAIN
+
+    inithooks_cache.write('APP_DOMAIN', domain)
 
     m = MySQL()
     m.execute('UPDATE phplist.phplist_admin SET password=\"%s\" WHERE loginname=\"admin\";' % password)
