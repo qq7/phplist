@@ -11,6 +11,7 @@ Option:
 import re
 import sys
 import getopt
+import inithooks_cache
 
 from dialog_wrapper import Dialog
 from mysqlconf import MySQL
@@ -58,6 +59,8 @@ def main():
             "PHPlist Email",
             "Enter email address for the PHPlist 'admin' account.",
             "admin@example.com")
+
+    inithooks_cache.write('APP_EMAIL', email)
 
     if not domain:
         if 'd' not in locals():
