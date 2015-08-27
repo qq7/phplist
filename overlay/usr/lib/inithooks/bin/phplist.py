@@ -11,6 +11,8 @@ Option:
 import re
 import sys
 import getopt
+import inithooks_cache
+
 
 from dialog_wrapper import Dialog
 from mysqlconf import MySQL
@@ -59,6 +61,8 @@ def main():
             "Enter email address for the PHPlist 'admin' account.",
             "admin@example.com")
 
+    inithooks_cache.write('APP_EMAIL', email)
+
     if not domain:
         if 'd' not in locals():
             d = Dialog('TurnKey Linux - First boot configuration')
@@ -70,6 +74,8 @@ def main():
 
     if domain == "DEFAULT":
         domain = DEFAULT_DOMAIN
+
+    inithooks_cache.write('APP_DOMAIN', domain)
 
     m = MySQL()
     m.execute('UPDATE phplist.phplist_admin SET password=\"%s\" WHERE loginname=\"admin\";' % password)
