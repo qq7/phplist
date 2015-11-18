@@ -90,10 +90,10 @@ rm -f /tmp/cookie
 
 # update email text and html signature
 OLD_TEXT="powered by phpList, www.phplist.com"
-NEW_TEXT="Powered by TurnKey PHPlist, http://www.turnkeylinux.org/phplist"
+NEW_TEXT="Powered by TurnKey PHPlist, https://www.turnkeylinux.org/phplist"
 
 OLD_HTML="\$html\[\"signature\"\] = \$PoweredByText;"
-NEW_HTML="\$html\[\"signature\"\] = \'<div style=\"clear: both; font-family: arial, verdana, sans-serif; font-size: 8px; font-variant: small-caps; font-weight: normal; padding: 2px; padding-left:10px;padding-top:20px;\">Powered by <a href=\"http://www.turnkeylinux.org/phplist\" target=\"_blank\">TurnKey PHPlist</a></div>\';"
+NEW_HTML="\$html\[\"signature\"\] = \'<div style=\"clear: both; font-family: arial, verdana, sans-serif; font-size: 8px; font-variant: small-caps; font-weight: normal; padding: 2px; padding-left:10px;padding-top:20px;\">Powered by <a href=\"https://www.turnkeylinux.org/phplist\" target=\"_blank\">TurnKey PHPlist</a></div>\';"
 
 sed -i "s|$OLD_TEXT|$NEW_TEXT|" $WEBROOT/admin/sendemaillib.php
 sed -i "s|$OLD_HTML|$NEW_HTML|" $WEBROOT/admin/sendemaillib.php
