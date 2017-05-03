@@ -63,6 +63,9 @@ $MYSQL_BATCH --execute "grant all privileges on $DB_NAME.* to $DB_USER@localhost
 
 # tweak configuration
 CONFIG=$WEBROOT/config/config.php
+# extended config contains ALL options, otherwise some sed lines wont run
+cp $WEBROOT/config/config_extended.php $CONFIG
+
 sed -i "s|^\$database_name.*|\$database_name = \"$DB_NAME\";|" $CONFIG
 sed -i "s|^\$database_user.*|\$database_user = \"$DB_USER\";|" $CONFIG
 sed -i "s|^\$database_password.*|\$database_password = \'$DB_PASS\';|" $CONFIG
@@ -71,12 +74,12 @@ sed -i "s|^\$table_prefix.*|\$table_prefix = \"\";|" $CONFIG
 sed -i "s|^\$usertable_prefix.*|\$usertable_prefix = \"\";|" $CONFIG
 sed -i "s|^\$pageroot.*|\$pageroot = \'/\';|" $CONFIG
 sed -i "s|^\$adminpages.*|\$adminpages = \'/admin\';|" $CONFIG
-sed -i "s|NOSTATSCOLLECTION.*|NOSTATSCOLLECTION\",1);|" $CONFIG
-sed -i "s|define(\"PHPMAILERHOST\".*|define(\"PHPMAILERHOST\",\'localhost\');|" $CONFIG
-sed -i "s|^define(\"PLUGIN_ROOTDIR.*|define(\"PLUGIN_ROOTDIR\",\"$PHPLIST_PLUGINS\");|" $CONFIG
-sed -i "s|^define(\"EMAILTEXTCREDITS.*|define(\"EMAILTEXTCREDITS\",1);|" $CONFIG
-sed -i "s|^define(\"PAGETEXTCREDITS.*|define(\"PAGETEXTCREDITS\",1);|" $CONFIG
-sed -i "s|^define (\"TEST\".*|define (\"TEST\",0);|" $CONFIG
+sed -i "s|NOSTATSCOLLECTION.*|NOSTATSCOLLECTION\', 1);|" $CONFIG
+sed -i "s|^define('PHPMAILERHOST'.*|define('PHPMAILERHOST', 'localhost');|" $CONFIG
+sed -i "s|^define('PLUGIN_ROOTDIR.*|define('PLUGIN_ROOTDIR', '$PHPLIST_PLUGINS');|" $CONFIG
+sed -i "s|^define('EMAILTEXTCREDITS.*|define('EMAILTEXTCREDITS', 1);|" $CONFIG
+sed -i "s|^define('PAGETEXTCREDITS.*|define('PAGETEXTCREDITS', 1);|" $CONFIG
+sed -i "s|^define('TEST'.*|define ('TEST', 0);|" $CONFIG
 
 # curl based install
 URL="http://127.0.0.1/admin/?page=initialise&firstinstall=1"
