@@ -31,7 +31,7 @@ cat >$PHPLIST_CLI<<EOF
 set \${USER:=admin}
 export USER
 export CONFIG=$WEBROOT/config/config.php
-php5 $WEBROOT/admin/index.php \$*
+php $WEBROOT/admin/index.php \$*
 EOF
 chmod +x $PHPLIST_CLI
 
@@ -51,8 +51,8 @@ a2ensite phplist
 a2enmod rewrite
 
 # start services
-/etc/init.d/mysql start
-/etc/init.d/apache2 start
+service mysql start
+service apache2 start
 
 # setup the database
 MYSQL_BATCH="mysql --user=root --password=$MYSQL_PASS --batch"
@@ -102,6 +102,6 @@ sed -i "s|$OLD_TEXT|$NEW_TEXT|" $WEBROOT/admin/sendemaillib.php
 sed -i "s|$OLD_HTML|$NEW_HTML|" $WEBROOT/admin/sendemaillib.php
 
 # stop services
-/etc/init.d/mysql stop
-/etc/init.d/apache2 stop
+service mysql stop
+service apache2 stop
 
