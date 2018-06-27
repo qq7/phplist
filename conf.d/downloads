@@ -5,7 +5,7 @@ dl() {
     cd $2; curl -L -f -O $PROXY $1; cd -
 }
 
-VERSION="3.3.1/phplist-3.3.1.tgz"
+VERSION="3.3.3/phplist-3.3.3.tgz"
 URL="http://sourceforge.net/projects/phplist/files/phplist/$VERSION"
 
 dl $URL /usr/local/src
