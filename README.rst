@@ -14,6 +14,10 @@ and on top of that:
    
    - Installed from upstream source code to /var/www/phplist
 
+      **Security note**: Updates to phpList may require supervision so
+      they **ARE NOT** configured to install automatically. See `phpList
+      documentation`_ for upgrading.
+
 - SSL support out of the box.
 - `Adminer`_ administration frontend for MySQL (listening on port
   12322 - uses SSL).
@@ -29,6 +33,7 @@ Credentials *(passwords set at first boot)*
 -  phpList: username **admin**
 
 
-.. _phpList: http://www.phplist.com/
+.. _phpList: https://www.phplist.com/
 .. _TurnKey Core: https://www.turnkeylinux.org/core
-.. _Adminer: http://www.adminer.org/
+.. _phpList documentation: https://www.phplist.org/manual/ch031_upgrading.xhtml
+.. _Adminer: https://www.adminer.org/
